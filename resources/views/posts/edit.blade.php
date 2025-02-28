@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
-
         <h2 class="text-xl font-semibold mb-4">Edit Post</h2>
 
         <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data">
@@ -19,12 +18,12 @@
                 <textarea id="body" name="body" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" required>{{ $post->body }}</textarea>
             </div>
 
-            @isset($post->image)
+            @if($hasImage)
                 <div class="mb-4">
                     <p class="font-medium text-gray-700">Current Image:</p>
                     <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" class="rounded-lg w-full object-cover">
                 </div>
-            @endisset
+            @endif
 
             <div class="mb-4">
                 <label for="image" class="block font-medium text-gray-700">Replace Image (Optional)</label>

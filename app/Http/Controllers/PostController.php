@@ -52,15 +52,15 @@ class PostController extends Controller
         ]);
     }
 
-
     public function edit(Post $post)
     {
-        if ($post->user_id !== Auth::id()) {
+        if ($post->user_id !== auth()->id()) {
             abort(403);
         }
 
         return view('posts.edit', [
-            'post' => $post
+            'post' => $post,
+            'hasImage' => !empty($post->image),
         ]);
     }
 
